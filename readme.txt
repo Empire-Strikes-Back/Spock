@@ -1,0 +1,1 @@
+i am spock program - i am text editor for programs

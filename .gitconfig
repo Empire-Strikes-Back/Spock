@@ -1,0 +1,5 @@
+[user]
+    name = spock
+    email = spock@program
+
+# git config --local include.path "../.gitconfig"
