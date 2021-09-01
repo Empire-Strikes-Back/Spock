@@ -14,7 +14,12 @@ main(){
 }
 
 uberjar(){
-  echo 1
+
+  clojure \
+    -X:uberjar genie.core/process \
+    :main-ns spock.main \
+    :filename '"out/spock.jar"' \
+    :paths '["src" "out/identicon"]'
 }
 
 release(){
