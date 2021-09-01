@@ -25,7 +25,7 @@
   )
 
   (doto jframe
-    (.setDefaultCloseOperation WindowConstants/EXIT_ON_CLOSE)
+    (.setDefaultCloseOperation WindowConstants/DISPOSE_ON_CLOSE)
     (.setSize 1600 1200)
     (.setLocation 1700 300)
     (.setVisible true)
