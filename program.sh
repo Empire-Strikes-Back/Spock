@@ -16,6 +16,12 @@ main(){
 uberjar(){
 
   clojure \
+    -X:identicon zazu.core/process \
+    :word '"spock"' \
+    :filename '"out/identicon/icon.png"' \
+    :size 256
+
+  clojure \
     -X:uberjar genie.core/process \
     :main-ns spock.main \
     :filename '"out/spock.jar"' \
