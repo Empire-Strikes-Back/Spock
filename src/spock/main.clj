@@ -9,7 +9,9 @@
     (java.io File)
     (javax.swing JFrame WindowConstants ImageIcon JTree JPanel JScrollPane BoxLayout JEditorPane)
     (javax.swing.tree DefaultTreeModel DefaultMutableTreeNode)
-  )    
+    (javax.swing.border LineBorder)
+    (java.awt Color)
+  )
 )
 
 #_(println (System/getProperty "clojure.core.async.pool-size"))
@@ -59,6 +61,7 @@
 
   (doto jpanel
     (.setLayout layout)
+    (.setBorder (LineBorder. (Color. 132 189 0 128) 2) )
     (.add scroll-pane)
     (.add editor-pane)
   )
