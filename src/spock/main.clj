@@ -6,7 +6,9 @@
     [clojure.string]
     [clojure.java.io :as io])
   (:import
-    (javax.swing JFrame WindowConstants ImageIcon)
+    (java.io File)
+    (javax.swing JFrame WindowConstants ImageIcon JTree JPanel JScrollPane BoxLayout JEditorPane)
+    (javax.swing.tree DefaultTreeModel DefaultMutableTreeNode)
   )    
 )
 
@@ -18,16 +20,54 @@
 
 (defn window
   []
-  (let [jframe (JFrame. "i am spock program")]
+  (let [jframe (JFrame. "i am spock program")
+        files (->>
+                (io/file (System/getProperty "user.dir"))
+                (.listFiles)
+              )
+        jpanel (JPanel.)
+        scroll-pane (JScrollPane.)
+        root (DefaultMutableTreeNode. "root")
+        tree-model (DefaultTreeModel. root)
+        jtree (JTree. tree-model)
+        editor-pane (JEditorPane.)
+        layout (BoxLayout. jpanel BoxLayout/X_AXIS)
+        ]
 
   (when-let [url (io/resource "icon.png")]
     (.setIconImage jframe (.getImage (ImageIcon. url)))
   )
 
+  (doseq [^File file files]
+    (println (.getName file))
+    (.add root (DefaultMutableTreeNode. (.getName file)))
+  )
+  (.reload tree-model)
+
+  (doto jtree
+    #_(.setRootVisible​ true)
+    (.setSize 420 1440)
+  )
+
+  (doto scroll-pane
+    (.setViewportView jtree)
+  )
+
+  (doto editor-pane
+    (.setSize 1500 1440)
+  )
+
+  (doto jpanel
+    (.setLayout layout)
+    (.add scroll-pane)
+    (.add editor-pane)
+  )
+
   (doto jframe
     (.setDefaultCloseOperation WindowConstants/DISPOSE_ON_CLOSE)
-    (.setSize 1600 1200)
-    (.setLocation 1700 300)
+    (.setSize 1920 1440)
+    (.setLocation 1700 200)
+    (.add jpanel)
     (.setVisible true)
   )
 
