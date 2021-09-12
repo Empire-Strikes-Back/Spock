@@ -1,4 +1,4 @@
-(ns spock.main
+(ns Spock.main
   (:gen-class)
   (:require 
     [clojure.core.async :as a :refer [<! >! <!! >!! chan put! take! go alt! alts! do-alts close! timeout pipe mult tap untap 
@@ -22,7 +22,7 @@
 
 (defn window
   []
-  (let [jframe (JFrame. "i am spock program")
+  (let [jframe (JFrame. "i am Spock program")
         files (->>
                 (io/file (System/getProperty "user.dir"))
                 (.listFiles)
@@ -74,7 +74,7 @@
     (.setVisible true)
   )
 
-  (alter-var-root #'spock.main/jframe (constantly jframe))
+  (alter-var-root #'Spock.main/jframe (constantly jframe))
 
   nil
   )
@@ -83,7 +83,7 @@
 (defn reload
   []
   (require 
-    '[spock.main]
+    '[Spock.main]
     :reload)
 )
 

@@ -3,28 +3,28 @@
 repl(){
   clj \
     -J-Dclojure.core.async.pool-size=1 \
-    -X:repl ripley.core/process \
-    :main-ns spock.main
+    -X:repl Ripley.core/process \
+    :main-ns Spock.main
 }
 
 main(){
   clojure \
     -J-Dclojure.core.async.pool-size=1 \
-    -M -m spock.main
+    -M -m Spock.main
 }
 
 uberjar(){
 
   clojure \
-    -X:identicon zazu.core/process \
-    :word '"spock"' \
+    -X:identicon Zazu.core/process \
+    :word '"Spock"' \
     :filename '"out/identicon/icon.png"' \
     :size 256
 
   clojure \
-    -X:uberjar genie.core/process \
-    :main-ns spock.main \
-    :filename '"out/spock.jar"' \
+    -X:uberjar Genie.core/process \
+    :main-ns Spock.main \
+    :filename '"out/Spock.jar"' \
     :paths '["src" "out/identicon"]'
 }
 
