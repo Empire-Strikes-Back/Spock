@@ -1,3 +1,2 @@
 i am Spock program, i say:
 
-i consist of extensions
