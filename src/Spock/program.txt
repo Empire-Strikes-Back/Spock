@@ -2,4 +2,3 @@ i am Spock program, i say:
 
 i consist of extensions
 my extension is a library
-all my extensions are flat in src/ alongside src/Spock
